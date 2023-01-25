@@ -1,7 +1,7 @@
 import React from 'react'
 
 
-function BotCollectionItem({ bot, botFunction }) {
+function BotCollectionItem({ bot, botFunction, dischargeBot }) {
 
     const botTypeClasses = {
         Assault: require("../../assets/blade-bite.svg").default,
@@ -14,6 +14,8 @@ function BotCollectionItem({ bot, botFunction }) {
 
     const { id, name, health, damage, armor, bot_class, catchphrase, avatar_url } = bot
   return (
+    <div className='item-wrapper'>
+        <button onClick={() => dischargeBot(id)} className='discharge'>X</button>
     <div className='bot-item' onClick={() => botFunction(bot)}>
           <div className='avatar'>
             <img src={avatar_url} alt={name} />
@@ -24,7 +26,7 @@ function BotCollectionItem({ bot, botFunction }) {
           </div>
           <p>{catchphrase}</p>
           <div className='divider'></div>
-          <div className='bottom'>
+          
           <div className='attributes'>
             <div>
                 <img src={require('../../assets/health.svg').default} alt="health"/>
@@ -40,9 +42,11 @@ function BotCollectionItem({ bot, botFunction }) {
             </div>
           </div>
 
-          <button className='discharge'>X</button>
-          </div>
+          
+         
         </div>
+        </div>
+
   )
 }
 

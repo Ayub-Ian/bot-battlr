@@ -1,10 +1,10 @@
 import React from "react";
 import BotCollectionItem from "./BotCollectionItem";
 
-function BotCollection({ bots, onEnlistBot }) {
+function BotCollection({ bots, onEnlistBot, dischargeBot }) {
 
   const list = bots.map(bot => (
-    <BotCollectionItem key={bot.id} bot={bot} botFunction={onEnlistBot} />
+    <BotCollectionItem key={bot.id} bot={bot} botFunction={onEnlistBot} dischargeBot={dischargeBot} />
   ))
 
   return (
