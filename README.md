@@ -68,7 +68,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 ## Deployment
 
-Website can be accessed live at [Bot Battlr website](https://bank-of-flatiron-eil3kvzdi-ayub-ian.vercel.app/)
+Website can be accessed live at [Bot Battlr website](https://bot-battlr-prgi.vercel.app/)
 
 ## Built With
 
