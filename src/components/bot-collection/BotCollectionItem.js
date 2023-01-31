@@ -1,7 +1,9 @@
 import React from 'react'
 
 
-function BotCollectionItem({ bot, botFunction, dischargeBot }) {
+function BotCollectionItem({ bot, botFunction, dischargeBot, enlisted }) {
+
+  let active = enlisted
 
     const botTypeClasses = {
         Assault: require("../../assets/blade-bite.svg").default,
@@ -12,10 +14,13 @@ function BotCollectionItem({ bot, botFunction, dischargeBot }) {
         Captain: require("../../assets/air-man.svg").default,
       }
 
+     
+
     const { id, name, health, damage, armor, bot_class, catchphrase, avatar_url } = bot
   return (
-    <div className='item-wrapper'>
-        <button onClick={() => dischargeBot(id)} className='discharge'>X</button>
+    <div className={active ? `item-wrapper enlisted` : "item-wrapper"}>
+      {active ? (<div className='enrolled'><p>Enrolled</p></div>) : (<button onClick={() => dischargeBot(id)} className='discharge'>X</button>) }
+        
     <div className='bot-item' onClick={() => botFunction(bot)}>
           <div className='avatar'>
             <img src={avatar_url} alt={name} />

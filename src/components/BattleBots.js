@@ -6,6 +6,8 @@ function BattleBots() {
 
     const [bots, setBots] = useState([])
     const [army, setArmy] = useState([])
+    const [enlisted, setEnlisted] = useState([])
+
     useEffect(() => {
         fetch('https://json-server-bot-battlr-vercel.vercel.app/bots')
         .then(res => res.json())
@@ -16,11 +18,13 @@ function BattleBots() {
     function enlistArmy(bot) {
         if (!army.includes(bot)) {
             setArmy([...army, bot])
+            setEnlisted([...enlisted, bot.id])
           }
     }
     
     function removeFromArmy(bot) {
         setArmy(army.filter((armyBot) => armyBot.id !== bot.id))
+        setEnlisted(enlisted.filter((armyBot) => armyBot !== bot.id))
     }
 
     function dischargeBot(id) {
@@ -31,10 +35,12 @@ function BattleBots() {
         
     }
 
+    console.log(enlisted)
+
   return (
     <div className='battle-bots'>
         <BotArmy army={army} removeFromArmy={removeFromArmy} />
-        <BotCollection bots={bots} onEnlistBot={enlistArmy} dischargeBot={dischargeBot} />
+        <BotCollection bots={bots} onEnlistBot={enlistArmy} dischargeBot={dischargeBot} enlisted={enlisted} />
     </div>
   )
 }
